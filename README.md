@@ -8,7 +8,7 @@
    neighbouxxr
 Niijeighbou  r
 
-./wadiff int-uat.faw-vw.com int.faw-vw.com
+./wadiff -s int-uat.faw-vw.com int.faw-vw.com
 int-uat.faw-vw.com
 int    .faw-vw.com
 ````
