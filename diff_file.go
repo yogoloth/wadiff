@@ -29,6 +29,10 @@ import (
 //	return
 //}
 
+type FileDiffConfig struct {
+	is_print_all bool
+}
+
 func File2Array(file string) (file_str []rune, err error) {
 	if fp, err := os.OpenFile(file, os.O_RDONLY, 0600); err != nil {
 		return nil, err
@@ -53,7 +57,7 @@ func File2Array(file string) (file_str []rune, err error) {
 	return
 }
 
-func PrintFileDiff(str1 []rune, str2 []rune, s_max int) {
+func PrintFileDiff(str1 []rune, str2 []rune, s_max int, config FileDiffConfig) {
 	//for i := size; i > 0; i-- {
 	//	//if routex[i] == routey[i] || routey[i] == rune(' ') {
 	//	if str1[i] == str2[i] {
@@ -72,7 +76,6 @@ func PrintFileDiff(str1 []rune, str2 []rune, s_max int) {
 	is_diff := false
 	for i := s_max; i > 0; i-- {
 		if str1[i] == rune('\n') {
-			//new_s2 = i - 1
 			s1 = i - 1
 			if is_diff {
 				fmt.Printf("file1: ")
@@ -80,15 +83,20 @@ func PrintFileDiff(str1 []rune, str2 []rune, s_max int) {
 				fmt.Printf("file2: ")
 				PrintDiff(str2[s1+1:s2+1], str1[s1+1:s2+1], s2-s1-1)
 				is_diff = false
+			} else {
+				if config.is_print_all && s2 > s1+1 {
+					//for i := s2; i > s1; i-- {
+					//	fmt.Printf("%c", str1[i])
+					//}
+					//fmt.Printf("\n")
+					PrintRunes(str2[s1+1:s2+1], s2-s1-1)
+				}
 			}
 			s2 = s1
 		} else if str1[i] != str2[i] { //str1 '\n' == str2 ' '
 			is_diff = true
 		}
 	}
-
-	//PrintDiff(str1[s1:s1+s2+1], str2[s1:s1+s2+1], s2)
-	//PrintDiff(str2[s1:s1+s2+1], str1[s1:s1+s2+1], s2)
 
 }
 

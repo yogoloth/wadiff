@@ -56,6 +56,16 @@ func GetRoute(source []rune, target []rune, matrix [][]int) (routex []rune, rout
 	return
 }
 
+func PrintRunes(str []rune, size int) {
+	//fmt.Printf("%d", size)
+
+	fmt.Printf("same:  ")
+	for i := size; i > 0; i-- {
+		fmt.Printf("%c", str[i])
+	}
+	fmt.Printf("\n")
+}
+
 func PrintDiff(str1 []rune, str2 []rune, size int) {
 	for i := size; i > 0; i-- {
 		if str1[i] == str2[i] {

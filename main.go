@@ -7,9 +7,11 @@ import (
 )
 
 var args_is_str bool
+var is_print_all bool
 
 func main() {
 	flag.BoolVar(&args_is_str, "s", false, "args as string")
+	flag.BoolVar(&is_print_all, "a", false, "print all common data")
 	flag.Parse()
 
 	//fmt.Println("args_is_str:", args_is_str)
@@ -36,7 +38,8 @@ func main() {
 		file1_str, file2_str := DiffFile(str_x, str_y)
 		routex, routey, route_max := GetDiff(file1_str, file2_str)
 
-		PrintFileDiff(routex, routey, route_max)
+		config := FileDiffConfig{is_print_all: is_print_all}
+		PrintFileDiff(routex, routey, route_max, config)
 		//PrintDiff(routey, routex, route_size)
 	}
 }

@@ -1,11 +1,11 @@
 package main
 
 //import (
-//lev "github.com/texttheater/golang-levenshtein/levenshtein"
-//"os"
+//	lev "github.com/texttheater/golang-levenshtein/levenshtein"
+//	"os"
 //)
-
-//func CreateDf(str_x []rune, str_y []rune) (df [][]int) {
+//
+//func CreateDp(str_x []rune, str_y []rune) (df [][]int) {
 //	options := lev.Options{
 //		InsCost: 1,
 //		DelCost: 1,

@@ -18,5 +18,11 @@ int    .faw-vw.com
 ````
 ./wadiff file1 file2
 ````
-
 ![example.png](sample_data/example.png)
+
+* example: compare files and output same lines
+````
+./wadiff -a  file1 file2
+````
+![example.png](sample_data/example_all.png)
+
