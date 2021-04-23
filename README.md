@@ -18,3 +18,5 @@ int    .faw-vw.com
 ````
 ./wadiff file1 file2
 ````
+
+![example.png](sample_data/example.png)
