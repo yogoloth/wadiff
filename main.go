@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-
 	"fmt"
 	"os"
 )
@@ -26,12 +25,18 @@ func main() {
 	str_y := others[1]
 
 	if args_is_str == true {
+		str1 := []rune(str_x)
+		str2 := []rune(str_y)
 
-		routex, routey, route_size := GetDiff(str_x, str_y)
+		routex, routey, route_max := GetDiff(str1, str2)
 
-		PrintDiff(routex, routey, route_size)
-		PrintDiff(routey, routex, route_size)
+		PrintDiff(routex, routey, route_max)
+		PrintDiff(routey, routex, route_max)
 	} else {
-		DiffFile(str_x, str_y)
+		file1_str, file2_str := DiffFile(str_x, str_y)
+		routex, routey, route_max := GetDiff(file1_str, file2_str)
+
+		PrintFileDiff(routex, routey, route_max)
+		//PrintDiff(routey, routex, route_size)
 	}
 }

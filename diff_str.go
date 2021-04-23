@@ -1,10 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gookit/color"
 	lev "github.com/texttheater/golang-levenshtein/levenshtein"
-
-	"fmt"
 	"os"
 )
 
@@ -86,10 +85,12 @@ func PrintDiff(str1 []rune, str2 []rune, size int) {
 	fmt.Printf("\n")
 }
 
-func GetDiff(str_1 string, str_2 string) (routex []rune, routey []rune, route_size int) {
+func GetDiff(str_1 []rune, str_2 []rune) (routex []rune, routey []rune, route_size int) {
 
-	str_x := []rune(str_1)
-	str_y := []rune(str_2)
+	//str_x := []rune(str_1)
+	//str_y := []rune(str_2)
+	str_x := str_1
+	str_y := str_2
 
 	options := lev.Options{
 		InsCost: 1,
