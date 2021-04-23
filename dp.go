@@ -29,7 +29,7 @@ func min(a int, b int) int {
 	return a
 }
 
-func CreateDf(source []rune, target []rune) (df [][]int) {
+func CreateDp(source []rune, target []rune) (df [][]int) {
 	//  http://www.let.rug.nl/~kleiweg/lev/levenshtein.html
 	height := len(source) + 1
 	width := len(target) + 1

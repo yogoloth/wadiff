@@ -71,7 +71,7 @@ func PrintDiff(str1 []rune, str2 []rune, size int) {
 
 func GetDiff(str_1 []rune, str_2 []rune) (routex []rune, routey []rune, route_size int) {
 
-	matrix := CreateDf(str_1, str_2)
+	matrix := CreateDp(str_1, str_2)
 
 	routex, routey, route_size = GetRoute(str_1, str_2, matrix)
 	return
