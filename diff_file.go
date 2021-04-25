@@ -1,10 +1,8 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"io"
-	"os"
+	"io/ioutil"
 )
 
 //func File2Array(file string) (file_str []string, err error) {
@@ -34,25 +32,12 @@ type FileDiffConfig struct {
 }
 
 func File2Array(file string) (file_str []rune, err error) {
-	if fp, err := os.OpenFile(file, os.O_RDONLY, 0600); err != nil {
-		return nil, err
+
+	if data, err := ioutil.ReadFile(file); err == nil {
+		//fmt.Println(data)
+		file_str = []rune(string(data))
 	} else {
-		defer fp.Close()
-		reader := bufio.NewReader(fp)
-		for {
-			str, err := reader.ReadString('\n')
-			if err == nil {
-				//fmt.Printf("read string is %s: \n", str)
-				str_r := []rune(str)
-				str_r = append(str_r, rune('\n'))
-				file_str = append(file_str, str_r...)
-			} else if err == io.EOF {
-				break
-			} else {
-				//fmt.Println("read string failed, err: ", err)
-				return nil, err
-			}
-		}
+		return nil, err
 	}
 	return
 }
@@ -101,8 +86,13 @@ func PrintFileDiff(str1 []rune, str2 []rune, s_max int, config FileDiffConfig) {
 }
 
 func DiffFile(file1 string, file2 string) (file1_str []rune, file2_str []rune) {
-	file1_str, _ = File2Array(file1)
-	file2_str, _ = File2Array(file2)
+	var err error
+	if file1_str, err = File2Array(file1); err != nil {
+		fmt.Printf("read %s error :%v\n", file1, err)
+	}
+	if file2_str, err = File2Array(file2); err != nil {
+		file2_str, err = File2Array(file2)
+	}
 
 	//fmt.Printf("%v\n%v\n", file1_str, file2_str)
 	return
