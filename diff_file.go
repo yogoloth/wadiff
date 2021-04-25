@@ -75,7 +75,7 @@ func PrintFileDiff(str1 []rune, str2 []rune, s_max int, config FileDiffConfig) {
 	//new_s2 := s2
 	is_diff := false
 	for i := s_max; i > 0; i-- {
-		if str1[i] == rune('\n') {
+		if str1[i] == rune('\n') || str2[i] == rune('\n') {
 			s1 = i - 1
 			if is_diff {
 				fmt.Printf("file1: ")
