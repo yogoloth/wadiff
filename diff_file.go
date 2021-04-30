@@ -63,15 +63,17 @@ func PrintFileDiff(str1 []rune, str2 []rune, s_max int, config FileDiffConfig) {
 		if str1[i] == rune('\n') || str2[i] == rune('\n') {
 			s1 = i - 1
 			if is_diff {
-				fmt.Printf("file1:  ")
-				PrintDiff(str1[s1+1:s2+1], str2[s1+1:s2+1], s2-s1-1)
-				fmt.Printf("file2:  ")
-				PrintDiff(str2[s1+1:s2+1], str1[s1+1:s2+1], s2-s1-1)
-				is_diff = false
+				if !no_print_diff {
+					fmt.Printf("file1:  ")
+					PrintDiff(str1[s1+1:s2+1], str2[s1+1:s2+1], s2-s1-1)
+					fmt.Printf("file2:  ")
+					PrintDiff(str2[s1+1:s2+1], str1[s1+1:s2+1], s2-s1-1)
+				}
 				if is_print_change {
 					fmt.Printf("change: ")
 					PrintChange(str1[s1+1:s2+1], str2[s1+1:s2+1], s2-s1-1)
 				}
+				is_diff = false
 			} else {
 				if config.is_print_all && s2 > s1+1 {
 					//for i := s2; i > s1; i-- {
