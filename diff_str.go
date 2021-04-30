@@ -59,7 +59,6 @@ func GetRoute(source []rune, target []rune, matrix [][]int) (routex []rune, rout
 func PrintRunes(str []rune, size int) {
 	//fmt.Printf("%d", size)
 
-	fmt.Printf("same:  ")
 	for i := size; i > 0; i-- {
 		fmt.Printf("%c", str[i])
 	}
@@ -68,6 +67,30 @@ func PrintRunes(str []rune, size int) {
 
 func PrintDiff(str1 []rune, str2 []rune, size int) {
 	for i := size; i > 0; i-- {
+		if str1[i] == str2[i] {
+			fmt.Printf("%c", str1[i])
+		} else if str1[i] == rune(' ') {
+			color.BgRed.Printf("%c", str1[i])
+		} else {
+			color.Red.Printf("%c", str1[i])
+		}
+	}
+	fmt.Printf("\n")
+}
+
+func PrintChange(str1 []rune, str2 []rune, size int) {
+	max := size
+	min := 0
+	//for i := size; i > 0; i-- {
+	//	if str1[i] != str2[i] {
+	//		if max == size {
+	//			max = i
+	//		}
+	//		min = i
+	//	}
+	//}
+	//for i := size; i > 0; i-- {
+	for i := max; i > min; i-- {
 		if str1[i] == str2[i] {
 			fmt.Printf("%c", str1[i])
 		} else if str1[i] == rune(' ') {

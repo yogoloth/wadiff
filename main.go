@@ -8,10 +8,12 @@ import (
 
 var args_is_str bool
 var is_print_all bool
+var is_print_change bool
 
 func main() {
 	flag.BoolVar(&args_is_str, "s", false, "args as string")
 	flag.BoolVar(&is_print_all, "a", false, "print all common data")
+	flag.BoolVar(&is_print_change, "c", false, "print changes")
 	flag.Parse()
 
 	//fmt.Println("args_is_str:", args_is_str)
