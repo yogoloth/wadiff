@@ -81,20 +81,21 @@ func PrintDiff(str1 []rune, str2 []rune, size int) {
 func PrintChange(str1 []rune, str2 []rune, size int) {
 	max := size
 	min := 0
+
 	for i := size; i > 0; i-- {
-		//fmt.Println("hello", str1[i], str2[i])
 		if str1[i] != str2[i] {
 			if max == size {
 				max = i
-			} else {
-				min = i
+				//fmt.Printf("max %d\n", max)
 			}
+			min = i
+			//fmt.Printf("min %d\n", min)
 		}
-		//fmt.Println(str1[i], min, max, size)
 	}
+	min = min - 1
+	max = max + 1
 	//fmt.Println(min, max, size)
-	//for i := size; i > 0; i-- {
-	for i := max; i > min-1; i-- {
+	for i := max; i > min; i-- {
 		if str1[i] == str2[i] {
 			fmt.Printf("%c", str1[i])
 		} else if str1[i] == rune(' ') {
@@ -104,11 +105,11 @@ func PrintChange(str1 []rune, str2 []rune, size int) {
 		}
 	}
 	fmt.Printf("  -->  ")
-	for i := max; i > min-1; i-- {
+	for i := max; i > min; i-- {
 		if str1[i] == str2[i] {
 			fmt.Printf("%c", str1[i])
 		} else if str2[i] == rune(' ') {
-			//color.BgRed.Printf("%c", str1[i])
+			//color.BgRed.Printf("%c", str2[i])
 		} else {
 			color.Red.Printf("%c", str2[i])
 		}

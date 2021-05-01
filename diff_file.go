@@ -72,6 +72,7 @@ func PrintFileDiff(str1 []rune, str2 []rune, s_max int, config FileDiffConfig) {
 				if is_print_change {
 					fmt.Printf("change: ")
 					PrintChange(str1[s1+1:s2+1], str2[s1+1:s2+1], s2-s1-1)
+					//PrintDiff(str2[s1+1:s2+1], str1[s1+1:s2+1], s2-s1-1)
 				}
 				is_diff = false
 			} else {
