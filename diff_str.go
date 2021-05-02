@@ -93,7 +93,9 @@ func PrintChange(str1 []rune, str2 []rune, size int) {
 		}
 	}
 	min = min - 1
-	max = max + 1
+	if max == size {
+		max = max + 1
+	}
 	//fmt.Println(min, max, size)
 	for i := max; i > min; i-- {
 		if str1[i] == str2[i] {
