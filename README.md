@@ -31,3 +31,10 @@ int    .faw-vw.com
 ./wadiff -c [-n]  file1 file2
 ````
 ![example.png](sample_data/example_changes.png)
+
+* example: compare configs from uat and prod and suggest vars for templates
+````
+for d in `ls uat`;do ./wadiff -n -c uat/$d/config.properties  prod/$d/config.properties ;done | sed 's/change://'| sort | uniq -c |sort -nr | awk 'NF>=4{print}'
+````
+![example.png](sample_data/example_suggest.png)
+
