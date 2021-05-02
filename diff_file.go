@@ -36,6 +36,9 @@ func File2Array(file string) (file_str []rune, err error) {
 	if data, err := ioutil.ReadFile(file); err == nil {
 		//fmt.Println(data)
 		file_str = []rune(string(data))
+		if file_str[len(file_str)-1] != rune('\n') {
+			file_str = append(file_str, rune('\n'))
+		}
 	} else {
 		return nil, err
 	}
